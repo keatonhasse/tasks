@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, inital-scale=1">
+  <title>Tasks</title>
+  <link rel="icon" type="image/png" href="/static/icon.png">
+  <link rel="stylesheet" href="/static/main.css">
+  <script src="/static/htmx.min.js"></script>
+</head>
+<body>
+  <h1>Tasks</h1>
+  <form hx-post="/tasks/add" hx-target="#task-list">
+    <input type="text" id="task" placeholder="New Task" required>
+    <button type="submit">Add</button>
+  </form>
+    <div id="task-list" hx-get="/tasks" hx-trigger="load">
+      {{ if not . }}
+        <p>no tasks yet</p>
+      {{ else }}
+        {{ template "task-list.html" }}
+      {{ end }}
+    </div>
+  </body>
+</html>
