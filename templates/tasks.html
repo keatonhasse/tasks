@@ -1,0 +1,8 @@
+<div id="task-list">
+    {{ range . }}
+    <div>
+        {{ .title }}
+        <button hx-delete="/{{ .id }}" hx-swap="outerHTML" hx-target="#task-list"></button>
+    </div>
+    {{ end }}
+</div>

@@ -22,8 +22,8 @@ var (
 )
 
 type Task struct {
-	id		int
-	title	string
+	id    int
+	title string
 }
 
 func ListTasks(w http.ResponseWriter, r *http.Request) {
@@ -79,7 +79,7 @@ func main() {
 			}
 
 			if tasks != nil {
-				tpl.ExecuteTemplate(w, "task-list.html", tasks)
+				tpl.ExecuteTemplate(w, "index.html", tasks)
 				return
 			}
 		})
@@ -97,7 +97,7 @@ func main() {
 				log.Fatal(err)
 			}
 
-			tpl.ExecuteTemplate(w, "list-item.html", task)
+			tpl.ExecuteTemplate(w, "tasks.html", task)
 		})
 	})
 
