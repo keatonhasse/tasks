@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="/static/main.css">
   <script src="/static/htmx.min.js"></script>
 </head>
-<body>
-  <h1>Tasks</h1>
-  <form hx-post="/tasks/add" hx-swap="outerHTML" hx-target="#task-list">
-    <input type="text" id="task" placeholder="New Task" required>
-    <button type="submit">Add</button>
-  </form>
-  {{ template "tasks.html" }}
+  <body>
+    <h1>Tasks</h1>
+    <form hx-post="/add" hx-swap="outerHTML" hx-target="#task-list" hx-on::after-request="this.reset()">
+      <input type="text" name="title" placeholder="New Task"  required>
+      <button type="submit">Add</button>
+    </form>
+    {{ template "task-list.html" . }}
   </body>
 </html>

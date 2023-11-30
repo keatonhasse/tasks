@@ -1,5 +1,13 @@
-<ul id="task-list">
-  {{ range . }}
-    <li>{{ .title }}</li>
+<div id="task-list">
+  {{ if not . }}
+    <p>no tasks yet</p>
+  {{ else }}
+    <ul>
+      {{ range . }}
+        <li>
+          {{ .Title }}&emsp;<button hx-delete="/{{ .ID }}" hx-swap="outerHTML" hx-target="#task-list">delete</button>
+        </li>
+      {{ end }}
+    </ul>
   {{ end }}
-</ul>
+</div>
